@@ -6,10 +6,21 @@ const rl = readline.createInterface({
   output: process.stdout,
 })
 
-rl.question('Hello, how are you', answer => {
-  console.log(answer)
-  rl.close()
-})
+rl.question(
+  'Which function and file would you to create? Please separate by comma: ',
+  answer => {
+    const functions = splitArray(answer)
+    functions.map(functionName => {
+      writeFile(functionName.trim())
+      rl.close()
+    })
+  }
+)
+
+function splitArray(answer) {
+  const newArray = answer.split(',')
+  return newArray
+}
 
 /*const functionName = process.argv[2] ?? 'myfunction'
 
