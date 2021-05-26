@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/deriancastro/filegenerator/issues"
   },
-  "homepage": "https://github.com/deriancastro/filegenerator#readme"
+  "homepage": "https://github.com/deriancastro/filegenerator#readme",
+  "dependencies": {
+    "inquirer": "^8.1.0"
+  }
 }
