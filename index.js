@@ -1,4 +1,3 @@
-
 const writeFile = require('./writeFile')
 const inquirer = require('inquirer')
 
@@ -43,16 +42,16 @@ const questions = [
     type: 'input',
     name: 'name',
     message:
-      'Which functions and files would you like to create? Please separete by comma. ',
+      'Which functions and files would you like to create? Plase seperate by comma.',
   },
   {
     type: 'checkbox',
+    message: 'Plase select a file type',
     name: 'fileTypes',
-    message: 'Please select a file type',
     choices: [{ name: 'component' }, { name: 'spec' }, { name: 'stories' }],
     validate(answer) {
       if (answer.length < 1) {
-        return 'You must choose at least one file type. '
+        return 'You must choose at least one file type.'
       }
       return true
     },
@@ -62,11 +61,11 @@ const questions = [
 inquirer.prompt(questions).then(answers => {
   // answers = { name: 'Header', fileTypes: ['component', 'spec']}
 
-  //iterate over filetypes arra from answer
+  // iterate over fileTypes array from answer
   answers.fileTypes.forEach(fileType => {
-    //get value (our template function) from each fileType
+    // get value (our template function) from each fileType
     const templateFunction = templates[fileType]
-    //call function and save string
+    // call function and save string
     const fileString = templateFunction(answers.name)
     writeFile(answers.name, fileType, fileString)
   })
